@@ -7,4 +7,8 @@ package com.youcy.springBootDemo.test;
  */
 public class Cat {
     int aaa = 1;
+
+    public static void main(String[] args) {
+        System.out.println("hot-fix");
+    }
 }
