@@ -10,5 +10,6 @@ public class Cat {
 
     public static void main(String[] args) {
         System.out.println("hot-fix");
+        System.out.println("hot-fix conflict test");
     }
 }
