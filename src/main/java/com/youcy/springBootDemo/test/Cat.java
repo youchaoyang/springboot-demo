@@ -6,5 +6,5 @@ package com.youcy.springBootDemo.test;
  * @Date 2022/8/31
  */
 public class Cat {
-    int aaa = 0;
+    int aaa = 1;
 }
