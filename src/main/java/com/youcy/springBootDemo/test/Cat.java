@@ -12,5 +12,6 @@ public class Cat {
         System.out.println("hot-fix");
         System.out.println("master conflict test");
         System.out.println("hot-fix conflict test");
+        System.out.println("push test");
     }
 }
