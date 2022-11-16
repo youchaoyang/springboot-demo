@@ -1,0 +1,9 @@
+// 简单Bean的复制（复制完收集成List）
+List<TopicLibVO> topicLibVoList = new ArrayList<>();
+topicLibList.forEach(topicLib -> {
+    TopicLibVO topicLibVO= BeanUtil.copyProperties(topicLib,TopicLibVO.class);
+    topicLibVoList.add(topicLibVO);
+});
+
+
+

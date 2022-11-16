@@ -1,0 +1,43 @@
+// -----------------------------MP----------------------------------------------------
+// mp 条件查询 (返回单个对象) 对于非唯一数据,直接使用one(),可能会出现非一条数据报错,可以使用last()拼接参数获取第一条数据
+TrainingPlan trainingPlan = this.lambdaQuery()
+    .eq(TrainingPlan::getStudentId, studentId)
+    .eq(TrainingPlan::getStatus, trainingPlanStatus == null ? TrainingPlanStatus.CURRENT.getValue() : trainingPlanStatus.getValue())
+    .eq(TrainingPlan::getType, type)
+    .one();
+Student xiaoming = studentService.lambdaQuery().eq(Student::getInfo, "xiaoming").last(" limit 1").one();
+
+// mp 条件查询（返回List）
+List<TopicLib> topicLibList = topicLibService.list(Wrappers.<TopicLib>lambdaQuery()
+        .eq(TopicLib::getType, EvaluationTypeEnum.ARTICULATION.getCode())
+        .eq(TopicLib::getIsDeleted, 0)
+        .in(TopicLib::getAgeStepId, ageStepIds));
+
+
+
+// mp insert单条数据
+save(trainingPlan); （注意所处的service,service和mapper是有对应关系的）
+
+// mp 批量插入数据
+trainingPlanDetailService.saveBatch(trainingPlanDetails);
+
+// -------------------------------SQL------------------------------------------
+// 查询： 联表、where条件、in、if条件、分组
+<select id="groupCountStageLearningStatusByPlanId"
+        resultType="org.springblade.modules.migration.dto.TrainingPlanDetailCountDTO">
+    SELECT a.learning_status count_column_value,COUNT(1) `count`
+    FROM training_plan_detail a
+    INNER JOIN topic_lib b ON a.`topic_id`=b.`id`
+    INNER JOIN articulation_step c ON b.`age_step_id`=c.`id`
+    WHERE  a.`is_deleted`=0
+        and a.training_plan_id=#{trainingPlanId}
+        AND a.topic_type=#{type}
+        AND b.`age_step_id` IN
+        <foreach collection="stageTypes" open="(" close=")" separator="," item="item">
+            #{item}
+        </foreach>
+    <if test="query != null and query!=''">
+        and topic_lib.name like concat('%',#{query},'%')
+    </if>
+    GROUP BY a.learning_status
+</select>
