@@ -17,7 +17,7 @@ public class ArrayNotes {
     public void test01(){
         /**
          * 1、字符串切割成数组
-         * 2、数组通过流转换成集合
+         * 2、数组通过流转换成集合1
          */
         String str = "1,2,3,4";
         String[] split = str.split(",");
