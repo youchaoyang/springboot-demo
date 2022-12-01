@@ -3,8 +3,10 @@ package com.youcy.springBootDemo.test;
 import com.youcy.springBootDemo.jdk8Demo.model.Jdk8User;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 /**
@@ -13,14 +15,29 @@ import java.util.stream.Collectors;
  * @Date 2022/9/20
  */
 public class Test01 {
-    public static void main(String[] args) {
-        StringBuilder stb = new StringBuilder();
-        stb.append("hello");
-        stb.append(",");
-        stb.append("world");
-        stb.append(",");
-        stb.append("欢迎使用StringJoiner");
-        System.out.println(stb);
+    public static void main(String[] args) throws InterruptedException {
+
+
+//        for (int i = 0; i <  10; i++) {
+//            System.out.println("开始执行第" + i + "次");
+//            sleep();
+//
+//        }
+//
+//        }
+//        String user = "15695922689";
+//        System.out.println(user.startsWith("156"));
+//
+//        System.out.println( user.substring(5));
+//        StringBuilder stb = new StringBuilder();
+//        stb.append("hello");
+//        stb.append(",");
+//        stb.append("world");
+//        stb.append(",");
+//        stb.append("欢迎使用StringJoiner");
+//        System.out.println(stb);
+
+
 //        String str = "1,2,3";
 //        System.out.println(str.contains("2,1"));
 //        String replace = str.replace("2,1", "");
@@ -28,18 +45,23 @@ public class Test01 {
 //        System.out.println(str);
 
 
-//        List<Long> aaa = new ArrayList<>();
-//        aaa.add(1L);
-//        aaa.add(3L);
-//
-//        List<Long> bbb = new ArrayList<>();
-//        aaa.add(3L);
-//        bbb.add(1L);
-//
-//
-//
-//
-//        System.out.println(aaa.containsAll(bbb));
+        List<Long> aaa = new ArrayList<>();
+        aaa.add(1L);
+        aaa.add(3L);
+
+        for (Long aLong : aaa) {
+            sleep(aLong);
+        }
+
+
+        List<Long> bbb = new ArrayList<>();
+        bbb.add(3L);
+        bbb.add(1L);
+        bbb.add(5L);
+        System.out.println(bbb);
+
+        bbb.clear();
+//        System.out.println(bbb);
 
 //        List<Integer> list = new ArrayList<>();
 //        list.add(1);
@@ -54,6 +76,11 @@ public class Test01 {
 //        aa.add(1);
 //        aa.add(2);
 //        aa.add(3);
+//        StringJoiner stringJoiner = new StringJoiner(",");
+//        aa.forEach(a -> {
+//            stringJoiner.add(a.toString());
+//        });
+//        System.out.println(stringJoiner);
 //        double sum = aa.stream().mapToDouble(Integer::intValue).sum();
 //        System.out.println(sum);
 //        aa.add(1);
@@ -161,5 +188,10 @@ public class Test01 {
 //
 //        }
 
+    public static void sleep(Long aaa) throws InterruptedException {
+        System.out.println("开始休眠");
+        System.out.println(aaa);
+        System.out.println("休眠结束");
+    }
     }
 

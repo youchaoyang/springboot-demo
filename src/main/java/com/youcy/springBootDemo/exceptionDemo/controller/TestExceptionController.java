@@ -21,6 +21,16 @@ public class TestExceptionController {
     @GetMapping("test01")
     public String test01(){
         testService.testService();
-        return "aaa";
+        return "test01";
     }
+
+
+    @GetMapping("test02")
+    public String test02(){
+        for (int i = 0; i < 10; i++) {
+            test01();
+        }
+        return "test02";
+    }
+
 }

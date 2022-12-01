@@ -15,10 +15,13 @@ public class TestServiceImpl implements TestService {
     public void testService() {
 
         try {
-            int a = 1/0;
-        } catch (Exception e) {
-            throw new BaseException(555,"自定义异常");
+            System.out.println("test01开始");
+            Thread.sleep(5000);
+            System.out.println("test01结束");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+
 
     }
 }
